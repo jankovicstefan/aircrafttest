@@ -11,7 +11,8 @@ import { ActivatedRoute } from '@angular/router';
 export class DetailsComponent implements OnInit {
 
 	flightData : Object;
-	str : String;
+	imgData: Object;
+	
 	
 
   constructor(private router: ActivatedRoute, private _dataService: DataService) {
@@ -23,12 +24,13 @@ export class DetailsComponent implements OnInit {
 			
 		this.router.params.subscribe((params) => {
 			var icao = params['icao'];
+			var op = params['company'];
+			console.log(op);
 			this._dataService.getFlight(icao).subscribe(flight => {
-				
-			// 	  this.str = flight.acList[0].Op;
-			// 	  //this.str[0];
-			//   console.log(this.str.replace(/ /g,'').toLowerCase());
 				this.flightData = flight.acList[0];
+			})
+			this._dataService.getImage(op).subscribe(img => {
+				this.imgData = img;
 			})
 		})
   }

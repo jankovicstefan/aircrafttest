@@ -7,9 +7,13 @@ import 'rxjs/Rx';
 @Injectable()
 export class DataService {
 
+  private clearbitApiKey : String = "";
+
   
 
-  constructor(private _jsonp: Jsonp) { }
+  constructor(private _jsonp: Jsonp) { 
+
+  }
 
  	
 
@@ -23,8 +27,8 @@ export class DataService {
 		.map(res => res.json());	
   }	
 
-//   getImage(name: String) {
-// 	return this._jsonp.get('https://company.clearbit.com/v1/domains/find?name='+name)
-// 		.map(res => res.json());
-//   }
+   getImage(name: String) {
+ 	return this._jsonp.get('https://company.clearbit.com/v1/domains/find?name='+name )
+ 		.map(res => res.json());
+   }
 }

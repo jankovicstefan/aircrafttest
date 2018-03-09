@@ -1,9 +1,4 @@
-<!-- <p *ngIf="flightData">
-  {{ flightData.Id }}
-</p> -->
-<!-- <div *ngIf="flightData"> -->
-	<!-- <img src="//logo.clearbit.com/{{flightData.Op}}.com"> -->
-<!-- </div> -->
+
 <div  *ngIf="flightData && flightData.Man else noinfo" class="col-md-8">	
 	<div class="panel panel-default panel-primary">
 		<div class="panel-heading">
@@ -11,14 +6,20 @@
 		</div>
 		<div class="panel-body">
 				<div *ngIf="flightData.Man" >
-					<h3 class="text-info">Manufacturer:  <span class="text-right"><b>{{ flightData.Man }} </b> </span> </h3> 
+					<h3 class="text-info">Manufacturer:  <b>{{ flightData.Man }} </b> </h3>
+					<hr>
 				</div>
+				
 				<div *ngIf="flightData.Mdl">
 					<h3 class="text-info">Model: <b>{{ flightData.Mdl }}</b> </h3>
+					<hr>
 				</div>
+				
 				<div *ngIf="flightData.From">
 					<h3 class="text-info">From: <b>{{ flightData.From }} </b></h3>
+					<hr>
 				</div>
+				
 				<div *ngIf="flightData.To"> 
 					<h3 class="text-info">To: <b>{{ flightData.To }} </b></h3>
 				</div>
@@ -26,7 +27,7 @@
 	</div>
 </div>
 <ng-template #noinfo>
-	<div class="col-md-8">
+	<div *ngIf="flightData" class="col-md-8">
 		<div class="panel panel-default panel-warning">
 				<div class="panel-heading">
 					<h3 class="panel-title"> <b>No Info</b></h3>
