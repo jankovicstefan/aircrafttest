@@ -17,7 +17,7 @@ export class ListComponent implements OnInit {
 		
 		this._dataService.getData().subscribe(res => {
 			this.data = res.acList;
-			console.log(res.acList);
+			console.log(this.data);
 		});
 
 		Observable
@@ -26,7 +26,7 @@ export class ListComponent implements OnInit {
 			.flatMap(() => this._dataService.getData())
 			.subscribe(res => {
 				this.data = res.acList;
-				console.log(res.acList);
+				
     });
 	
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { ActivatedRoute } from '@angular/router';
-import { clearbit } from 'clearbit';
+
 
 @Component({
   selector: 'detailsview',
@@ -20,17 +20,17 @@ export class DetailsComponent implements OnInit {
 
 
   ngOnInit() {
-	  this.router.params.subscribe((params) =>{
-		  console.log(params['icao']);
-		  var id = params['icao'];
-		  this._dataService.getFlight(id).subscribe(flight => {
-			  
-			  this.str = flight.acList[0].Op;
-			  //this.str[0];
-		  console.log(this.str.replace(/ /g,'').toLowerCase());
-			  this.flightData = flight.acList[0];
-		  })
-	  })
+			
+		this.router.params.subscribe((params) => {
+			var icao = params['icao'];
+			this._dataService.getFlight(icao).subscribe(flight => {
+				
+			// 	  this.str = flight.acList[0].Op;
+			// 	  //this.str[0];
+			//   console.log(this.str.replace(/ /g,'').toLowerCase());
+				this.flightData = flight.acList[0];
+			})
+		})
   }
 
 }

@@ -5,7 +5,6 @@ import { DetailsComponent } from './details/details.component';
 
 const routes = [
 
-	// { path: '', component: ListComponent },
 	{ path: 'flight/:icao', component: DetailsComponent }
 ];
 

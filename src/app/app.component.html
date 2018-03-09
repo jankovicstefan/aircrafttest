@@ -6,11 +6,26 @@
 		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
 		  <span class="sr-only">Toggle navigation</span>
 		</button>
-		<a class="navbar-brand" href="/">Air Traffic Test</a>
+		<a class="navbar-brand" href="/"> <b>Air Traffic Test</b></a>
 	  </div>
 	</div>
   </nav>
-  <list></list>
-<div class="container">
-	<router-outlet></router-outlet>
-</div>
+  
+
+		<div *ngIf="htmlStr; else data">
+			<div id="warning" class="panel panel-default panel-danger">
+				<div class="panel-heading">
+					<h3 class="panel-title"> <b>Location </b></h3>
+				</div>
+				<div class="panel-body">
+					<b><p class="text-danger">{{ htmlStr }}</p></b>
+				</div>
+			</div>
+		</div>
+		<ng-template #data>
+				<div class="container">
+					<list></list>
+					
+					<router-outlet></router-outlet>
+				</div>
+		</ng-template>
