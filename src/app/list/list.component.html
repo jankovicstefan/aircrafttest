@@ -1,0 +1,10 @@
+<div class="col-md-3">
+	<div class="list-group">
+		<div *ngFor="let d of data">
+			<a routerLink="/flight/{{d.Icao}}"  class="list-group-item btn btn-default text-left" >
+				<div id="Icao">{{d.Icao}} </div>
+				<div id="Icao">{{d.Alt}} </div>
+			</a>
+		</div>
+	</div>
+</div>
