@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
 
 	ngOnInit() {
 		
+		
 		if(navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(this.showPosition, nerror => {
 				switch(nerror.code) {
@@ -36,7 +37,9 @@ export class AppComponent implements OnInit {
 	}
 
 	showPosition(position) {
-	    console.log(position.coords); 
+	    //console.log(position.coords); 
 	}
+
+	
 }
 

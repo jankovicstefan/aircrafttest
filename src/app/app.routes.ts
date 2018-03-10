@@ -4,8 +4,7 @@ import { ListComponent } from './list/list.component';
 import { DetailsComponent } from './details/details.component';
 
 const routes = [
-	{ path: 'flight/:icao', component: DetailsComponent },
-	{ path: 'flight/:icao/:company', component: DetailsComponent }
+	{ path: 'flight/:icao', component: DetailsComponent }
 ];
 
 

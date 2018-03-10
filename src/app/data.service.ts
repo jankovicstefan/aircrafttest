@@ -7,15 +7,29 @@ import 'rxjs/Rx';
 @Injectable()
 export class DataService {
 
-  private clearbitApiKey : String = "";
-
-  
+	latitude : String;
+	longitude: String;
 
   constructor(private _jsonp: Jsonp) { 
 
   }
 
- 	
+
+  public getLocation() {
+	  if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(position => {
+			this.latitude = position.coords.latitude.toString();
+			this.longitude = position.coords.longitude.toString();
+
+			console.log(this.latitude);
+		})
+	  }
+  }
+
+  getPlanesOverUser() {
+	return this._jsonp.get('https://public-api.adsbexchange.com/VirtualRadar/AircraftList.json?callback=JSONP_CALLBACK&lat='+this.latitude+'&lng='+this.longitude+'&fDstL=0&fDstU=150')
+		.map(res => res.json());	
+  }
 
   getData() {
 	return this._jsonp.get('https://public-api.adsbexchange.com/VirtualRadar/AircraftList.json?callback=JSONP_CALLBACK')
@@ -27,8 +41,4 @@ export class DataService {
 		.map(res => res.json());	
   }	
 
-   getImage(name: String) {
- 	return this._jsonp.get('https://company.clearbit.com/v1/domains/find?name='+name )
- 		.map(res => res.json());
-   }
 }

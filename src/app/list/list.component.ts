@@ -14,18 +14,17 @@ export class ListComponent implements OnInit {
 
   	constructor(private _dataService: DataService) {
 
-		
-		this._dataService.getData().subscribe(res => {
+		this._dataService.getPlanesOverUser().subscribe(res => {
 			this.data = res.acList;
 			console.log(this.data);
 		});
-
+		
 		Observable
-			.interval(60 * 1000) 
+			.interval(3 * 1000) 
 			.timeInterval()
-			.flatMap(() => this._dataService.getData())
+			.flatMap(() => this._dataService.getPlanesOverUser())
 			.subscribe(res => {
-				this.data = res.acList;
+				this.data = res.acList;	
 				
     });
 	
@@ -33,6 +32,11 @@ export class ListComponent implements OnInit {
    	}
 
   ngOnInit() {
+	this._dataService.getLocation();
+  }
+
+  onClick() {
+	window.scrollTo(0,0);
   }
 
 }
