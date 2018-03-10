@@ -10,13 +10,12 @@ import { Observable } from 'rxjs/Observable';
 })
 export class ListComponent implements OnInit {
 
-	private data : Array<Object>;
+	private data : Observable<Object>;
 
   	constructor(private _dataService: DataService) {
 
 		this._dataService.getPlanesOverUser().subscribe(res => {
 			this.data = res.acList;
-			console.log(this.data);
 		});
 		
 		Observable

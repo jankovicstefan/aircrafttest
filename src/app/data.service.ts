@@ -20,8 +20,6 @@ export class DataService {
 		navigator.geolocation.getCurrentPosition(position => {
 			this.latitude = position.coords.latitude.toString();
 			this.longitude = position.coords.longitude.toString();
-
-			console.log(this.latitude);
 		})
 	  }
   }
